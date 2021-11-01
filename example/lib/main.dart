@@ -12,6 +12,7 @@ class _MyAppState extends State<MyApp> {
   ScreenshotCallback screenshotCallback;
 
   String text = "Ready..";
+  DateTime time = DateTime.now();
 
   @override
   void initState() {
@@ -22,7 +23,6 @@ class _MyAppState extends State<MyApp> {
 
   void init() async {
     await initScreenshotCallback();
-
   }
 
   //It must be created after permission is granted.
@@ -36,7 +36,11 @@ class _MyAppState extends State<MyApp> {
     });
 
     screenshotCallback.addListener(() {
-      print("We can add multiple listeners ");
+      setState(() {
+        time = DateTime.now();
+      });
+      print("Page screenshot $time");
+      // print(time)
     });
   }
 
@@ -49,9 +53,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Detect Screenshot Callback Example'),
+          title: const Text('Detect Screenshot'),
         ),
         body: Center(
           child: Text(text,
@@ -63,3 +68,5 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+//start callback
+//start
