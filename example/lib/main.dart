@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:screenshot_callback_example/details.dart';
+
 import 'package:screenshot_callback_example/home.dart';
 
 //latest changes
