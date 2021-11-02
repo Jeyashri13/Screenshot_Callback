@@ -1,73 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:screenshot_callback/screenshot_callback.dart';
+import 'package:screenshot_callback_example/details.dart';
+import 'package:screenshot_callback_example/home.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
+//latest changes
+void main() {
+  runApp(MyApp());
 }
 
-class _MyAppState extends State<MyApp> {
-  ScreenshotCallback screenshotCallback;
-
-  String text = "Ready..";
-  DateTime time = DateTime.now();
-
-  @override
-  void initState() {
-    super.initState();
-
-    init();
-  }
-
-  void init() async {
-    await initScreenshotCallback();
-  }
-
-  //It must be created after permission is granted.
-  Future<void> initScreenshotCallback() async {
-    screenshotCallback = ScreenshotCallback();
-
-    screenshotCallback.addListener(() {
-      setState(() {
-        text = "Screenshot callback Fired!";
-      });
-    });
-
-    screenshotCallback.addListener(() {
-      setState(() {
-        time = DateTime.now();
-      });
-      print("Page screenshot $time");
-      // print(time)
-    });
-  }
-
-  @override
-  void dispose() {
-    screenshotCallback.dispose();
-    super.dispose();
-  }
-
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Detect Screenshot'),
-        ),
-        body: Center(
-          child: Text(text,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              )),
-        ),
+      title: 'Screenshot Callback',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      home: MyHomePage(),
     );
   }
 }
-//start callback
-//start
-//kik
