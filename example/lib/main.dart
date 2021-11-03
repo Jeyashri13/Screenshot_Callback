@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:screenshot_callback_example/home.dart';
+import 'package:screenshot_callback_example/home2.dart';
 
 //latest changes
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: Home2(),
     );
   }
 }

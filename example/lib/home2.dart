@@ -1,18 +1,18 @@
-import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:screenshot_callback/screenshot_callback.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key key}) : super(key: key);
+class Home2 extends StatefulWidget {
+  const Home2({Key key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _Home2State createState() => _Home2State();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _Home2State extends State<Home2> {
   ScreenshotCallback screenshotCallback;
 
-  String text = "Ready..";
+  String text = 'Ready..';
   DateTime time = DateTime.now();
 
   @override
@@ -26,14 +26,13 @@ class _MyHomePageState extends State<MyHomePage> {
     await initScreenshotCallback();
   }
 
-  //It must be created after permission is granted.
   Future<void> initScreenshotCallback() async {
     screenshotCallback = ScreenshotCallback();
 
     screenshotCallback.addListener(() {
       setState(() {
         time = DateTime.now();
-        text = "Screenshot callback Fired!";
+        text = 'Screenshot callback Fired';
         print("$runtimeType page screenshoted at $time");
       });
       Future.delayed(Duration(seconds: 3), () {
@@ -54,17 +53,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Detect Screenshot'),
+        title: const Text('Detect Screenshot2'),
       ),
       body: Center(
         child: Text(
           text,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
     );
   }
 }
-//updated
